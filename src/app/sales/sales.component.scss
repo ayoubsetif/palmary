@@ -1,0 +1,25 @@
+.container {
+    align-items: center;
+    display: flex;
+}
+
+.vs-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.vs-import {
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px;
+	align-self: baseline;
+	button {
+		margin: 2%;
+		width: 230px;
+	}
+}
+
+.group-sales {
+	width: 230px;
+}
