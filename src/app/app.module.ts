@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    SalesComponent
+    SalesComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,
