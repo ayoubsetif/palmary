@@ -19,6 +19,27 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="dashboard.length">
+  <div class="date-holder"></div>
+   
+
+  <table mat-table [dataSource]="dashboard" class="mat-elevation-z8">
+    <ng-container matColumnDef="salesman">
+      <th mat-header-cell *matHeaderCellDef> Salesman </th>
+      <td mat-cell *matCellDef="let element"> {{ element.salesman }} </td>
+    </ng-container>
+      
+    <ng-container matColumnDef="totalVente">
+      <th mat-header-cell *matHeaderCellDef> total Vente </th>
+      <td mat-cell *matCellDef="let element"> {{ element.netValue }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedNetColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedNetColumns;"></tr>
+  </table>
+</div>
+
 <div *ngIf="retours.length">
     <h3>Les retours a faire manuellement sur systeme(ERP)</h3>
     <table  mat-table [dataSource]="retours" class="mat-elevation-z8">

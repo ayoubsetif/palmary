@@ -16,6 +16,8 @@ export class SalesComponent {
 	data: any = [];
 	salesman: any = {};
 	displayedColumns: string[] = ['vendeur', 'id', 'name', 'quantity', 'unitPrice', 'totalPrice'];
+	dashboard: any = [];
+	displayedNetColumns: string[] = ['salesman', 'totalVente'];
 
 	ngOnInit() {
 		this.salesman =  JSON.parse(localStorage.getItem('configPalmary')!);
@@ -29,6 +31,7 @@ export class SalesComponent {
 			const worksheet = this.readFile(fileReader);
 			const arr = XLSX.utils.sheet_to_json(worksheet, {raw: true });
 	    	let data: any = [];
+			const dashbord: any = [];
 			_.drop(arr).forEach((l:any) => {
 				data.push({
 					salesman: l['__EMPTY_1'],
@@ -40,6 +43,18 @@ export class SalesComponent {
 				})
 			})
 			this.data = data;
+			const bySalesamn = _.groupBy(data, 'salesman');
+
+			Object.keys(bySalesamn).map(m => {
+				const aon = bySalesamn[m].map((p:any) => p['totalPrice']);
+				const netValue = _.reduce(aon, function(a, b) { return a + b; }, 0);
+				dashbord.push({
+					salesman: m,
+					netValue: netValue.toFixed(2),
+				})
+			})
+			this.dashboard = dashbord;
+
 			this.salesmanList = _.compact(_.uniq(_.drop(arr).map((m: any) => m['__EMPTY_1'])));
 		};
 		fileReader.readAsArrayBuffer(this.file);

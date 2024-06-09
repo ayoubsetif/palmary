@@ -143,7 +143,7 @@ export class StockComponent {
 		const wb: XLSX.WorkBook = XLSX.utils.book_new();
 		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 		/* save to file */
-		XLSX.writeFile(wb, `${this.comparator[0]['emplacement']}.xlsx`);
+		XLSX.writeFile(wb, `diff de stock.xlsx`);
 	}
 
 
