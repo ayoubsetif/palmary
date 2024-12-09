@@ -129,7 +129,7 @@ export class StockComponent {
 				d['quantity'] = r['quantity'] - m['quantity'];
 			}
 		});
-		return diff;
+		return diff.filter((f:any) => f['quantity'] !== 0);
 	}
 
   download() {
